@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Today's Deals - Crystal Cove</title>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Gilroy', sans-serif;
+        }
+
+        body {
+            background-color: #f7f7f7;
+        }
+        .header {
+            background: linear-gradient(135deg, burlywood, #e6c097);
+            color: white;
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        .header.scrolled {
+            padding: 0.5rem 2rem;
+            background: rgba(222, 184, 135, 0.95);
+            backdrop-filter: blur(5px);
+        }
+        .header h1 {
+            font-size: 1.8em;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            animation: slideIn 1s ease-out;
+        }
+
+        #nav  {
+                display: flex;
+                gap: 20px;
+                animation: fadeIn 1s ease-out;
+            }
+        
+       
+
+        #nav-part2 {
+            display: flex;
+            gap: 20px;
+            animation: fadeIn 1s ease-out;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        #links a {
+            text-transform: uppercase;
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            font-size: 14px;
+            margin: 0 20px; padding: 5px 10px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .deals-container {
+            margin-top: 120px;
+            padding: 20px;
+        }
+
+        .deal-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .deal-header h1 {
+            font-size: 2.5em;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .countdown {
+            font-size: 1.2em;
+            color: #e74c3c;
+            font-weight: bold;
+        }
+
+        .deals-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 20px;
+        }
+
+        .deal-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+
+        .deal-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .discount-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #e74c3c;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 25px;
+            font-weight: bold;
+        }
+
+        .deal-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .deal-content {
+            padding: 20px;
+        }
+
+        .deal-title {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+
+        .price-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .original-price {
+            text-decoration: line-through;
+            color: #7f8c8d;
+        }
+
+        .deal-price {
+            font-size: 1.4em;
+            color: #e74c3c;
+            font-weight: bold;
+        }
+
+        .time-left {
+            font-size: 0.9em;
+            color: #e74c3c;
+            margin-bottom: 15px;
+        }
+
+        .deal-button {
+            background: burlywood;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1em;
+            transition: background 0.3s ease;
+        }
+
+        .deal-button:hover {
+            background: #d4a065;
+        }
+
+        @media (max-width: 768px) {
+            .deals-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 20px;
+                padding: 10px;
+            }
+
+            .deal-header h1 {
+                font-size: 2em;
+            }
+        }
+         /* Animations */
+         @keyframes slideIn {
+            from {
+                transform: translateX(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes bounceIn {
+            0% {
+                transform: scale(0);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                transform: scale(0);
+            }
+            to {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+    <div id="nav">
+        <div id="nav-part2">
+            <div id="links">
+                <a href="Shop.html">Shop</a>
+                <a href="Search.html">Search</a>
+                <a href="Index.html">Home</a>
+                <a href="deals.html">Today's Deals</a>
+            </div>
+        </div>
+    </div>
+    </header>
+    <div class="deals-container">
+        <div class="deal-header">
+            <h1>Today's Special Deals</h1>
+            <div class="countdown">Deals End In: <span id="timer">23:59:59</span></div>
+        </div>
+
+        <div class="deals-grid" id="dealsGrid">
+            <!-- Deals will be populated here by JavaScript -->
+        </div>
+    </div>
+
+    <script>
+        const deals = [
+            {
+                id: 1,
+                title: "Diamond Stud Earrings",
+                originalPrice: 299.99,
+                dealPrice: 199.99,
+                discount: 33,
+                image: "https://i.pinimg.com/736x/11/22/1b/11221b1b597f13ec3762e40152d15f9e.jpg",
+                timeLeft: "12:00:00"
+            },
+            {
+                id: 2,
+                title: "Gold Chain Necklace",
+                originalPrice: 499.99,
+                dealPrice: 299.99,
+                discount: 40,
+                image: "https://i.pinimg.com/736x/d2/47/66/d2476627ac897d2c89ae7cc25e8d1141.jpg",
+                timeLeft: "08:30:00"
+            },
+            {
+                id: 3,
+                title: "Pearl Bracelet Set",
+                originalPrice: 199.99,
+                dealPrice: 129.99,
+                discount: 35,
+                image: "https://i.pinimg.com/736x/df/8a/f4/df8af4cebbf23fcfe8272da7ecbc4846.jpg",
+                timeLeft: "05:45:00"
+            },
+            {
+                id: 4,
+                title: "Rose Gold Ring",
+                originalPrice: 399.99,
+                dealPrice: 249.99,
+                discount: 37,
+                image: "https://i.pinimg.com/736x/56/c9/65/56c9655946077ee55b6246418749f46c.jpg",
+                timeLeft: "03:15:00"
+            }
+        ];
+
+        function displayDeals() {
+            const dealsGrid = document.getElementById('dealsGrid');
+            dealsGrid.innerHTML = deals.map(deal => `
+                <div class="deal-card">
+                    <div class="discount-badge">${deal.discount}% OFF</div>
+                    <img src="${deal.image}" alt="${deal.title}" class="deal-image">
+                    <div class="deal-content">
+                        <h3 class="deal-title">${deal.title}</h3>
+                        <div class="price-container">
+                            <span class="original-price">$${deal.originalPrice}</span>
+                            <span class="deal-price">$${deal.dealPrice}</span>
+                        </div>
+                        <div class="time-left">Time Left: ${deal.timeLeft}</div>
+                        <button class="deal-button" onclick="addToCart(${deal.id})">Add to Cart</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function updateTimer() {
+            const timerElement = document.getElementById('timer');
+            let [hours, minutes, seconds] = timerElement.textContent.split(':').map(Number);
+            
+            setInterval(() => {
+                if (seconds > 0) {
+                    seconds--;
+                } else if (minutes > 0) {
+                    minutes--;
+                    seconds = 59;
+                } else if (hours > 0) {
+                    hours--;
+                    minutes = 59;
+                    seconds = 59;
+                }
+                
+                timerElement.textContent = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+            }, 1000);
+        }
+
+        function addToCart(dealId) {
+            const deal = deals.find(d => d.id === dealId);
+            alert(`Added ${deal.title} to cart for $${deal.dealPrice}`);
+        }
+
+        // Initialize the page
+        displayDeals();
+        updateTimer();
+    </script>
+</body>
+</html>
